@@ -1,0 +1,20 @@
+version: 2.1
+
+orbs:
+  solidusio_extensions: solidusio/extensions@dev:0.0.1
+
+workflows:
+  build:
+    jobs:
+      - solidusio_extensions/run_specs:
+          solidus_version: master
+      - solidusio_extensions/run_specs:
+          solidus_version: v2.8
+      - solidusio_extensions/run_specs:
+          solidus_version: v2.7
+      - solidusio_extensions/run_specs:
+          solidus_version: v2.6
+      - solidusio_extensions/run_specs:
+          solidus_version: v2.5
+      - solidusio_extensions/run_specs:
+          solidus_version: v2.4
