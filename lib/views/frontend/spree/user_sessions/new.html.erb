@@ -1,36 +1,57 @@
-<% if flash[:alert] %>
-  <div class="flash errors"><%= flash[:alert] %></div>
-<% end %>
-
-<% @body_id = 'login' %>
-<div id="existing-customer">
-  <h6><%= I18n.t('spree.login_as_existing') %></h6>
-  <div data-hook="login">
-    <%= render partial: 'spree/shared/login' %>
-    <%= I18n.t('spree.or') %>&nbsp;<%= link_to I18n.t('spree.create_a_new_account'), spree.signup_path %> | <%= link_to I18n.t('spree.forgot_password'), spree.recover_password_path %>
-  </div>
-</div>
-<div data-hook="login_extras"></div>
-
-
-<% @body_id = 'signup' %>
-
-<%= render 'spree/shared/error_messages', target: resource %>
-
-<div id="new-customer">
-  <h6><%= I18n.t('spree.new_customer') %></h6>
-
-  <div data-hook="signup">
-    <%= form_for resource, as: :spree_user, url: spree.registration_path(resource) do |f| %>
-      <div data-hook="signup_inside_form">
-        <%= render partial: 'spree/shared/user_form', locals: { f: f } %>
-        <p><%= f.submit I18n.t('spree.create'), class: 'button primary' %></p>
-      </div>
-    <% end %>
-    <%= I18n.t('spree.or') %>&nbsp;<%= link_to I18n.t('spree.login_as_existing'), spree.login_path %>
-
-  </div>
-
+<div class="row">
+	<section id="page_info">
+	  <div class="root my-3">
+	    <div class="hero border-0">
+	      <h1 class="text-center hero-dark-copy">ACCOUNT SIGN IN</h1>
+	      
+	      <div class="text-center hero-copy">
+	        Hear about exciting offers and company news! Track and review
+			orders, as well as create and manage projects. Upload photos and a
+			copy of your measurements - all your info in one place.
+	      </div>
+	    </div>
+	  </div>
+	</section>
 </div>
 
-<div data-hook="login_extras"></div>
+<div class="row">
+	<div class="col-sm-6">
+		<% if flash[:alert] %>
+		  <div class="flash errors"><%= flash[:alert] %></div>
+		<% end %>
+
+		<% @body_id = 'login' %>
+		<div id="existing-customer">
+		  <h6><%= I18n.t('spree.login_as_existing') %></h6>
+		  <div data-hook="login">
+		    <%= render partial: 'spree/shared/login' %>
+		    <%= I18n.t('spree.or') %>&nbsp;<%= link_to I18n.t('spree.create_a_new_account'), spree.signup_path %> | <%= link_to I18n.t('spree.forgot_password'), spree.recover_password_path %>
+		  </div>
+		</div>
+		<div data-hook="login_extras"></div>
+	</div>
+
+	<div class="col-sm-6">
+		<% @body_id = 'signup' %>
+
+		<%= render 'spree/shared/error_messages', target: resource %>
+
+		<div id="new-customer">
+		  <h6><%= I18n.t('spree.new_customer') %></h6>
+
+		  <div data-hook="signup">
+		    <%= form_for resource, as: :spree_user, url: spree.registration_path(resource) do |f| %>
+		      <div data-hook="signup_inside_form">
+		        <%= render partial: 'spree/shared/user_form', locals: { f: f } %>
+		        <p><%= f.submit I18n.t('spree.create'), class: 'button primary' %></p>
+		      </div>
+		    <% end %>
+		    <%= I18n.t('spree.or') %>&nbsp;<%= link_to I18n.t('spree.login_as_existing'), spree.login_path %>
+
+		  </div>
+
+		</div>
+
+		<div data-hook="login_extras"></div>
+	</div>
+</div>
