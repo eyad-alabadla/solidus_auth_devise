@@ -1,20 +1,17 @@
-<div class="container">
+<section class="container my-5">
 	<div class="row">
-		<section id="page_info">
-		  <div class="root my-3">
-		    <div class="hero border-0">
-		      <h1 class="text-center hero-dark-copy">ACCOUNT SIGN IN</h1>
-		      
-		      <div class="text-center hero-copy">
-		        Hear about exciting offers and company news! Track and review
-				orders, as well as create and manage projects. Upload photos and a
+		<div class="col-12 my-5">
+			<h1 class="hero-dark-copy text-center">ACCOUNT SIGN IN</h1>
+			<div class="text-center hero-copy">
+				Hear about exciting offers and company news! Track and review<br>
+				orders, as well as create and manage projects. Upload photos and a<br>
 				copy of your measurements - all your info in one place.
-		      </div>
-		    </div>
-		  </div>
-		</section>
+			</div>
+		</div>
 	</div>
-
+</section>
+<hr>
+<section class="container">
 	<div class="row">
 		<div class="col-sm-6">
 			<% if flash[:alert] %>
@@ -36,12 +33,13 @@
 			<%= render 'spree/shared/error_messages', target: resource %>
 			<div id="new-customer">
 			  <h6><%= I18n.t('spree.new_customer') %></h6>
-
 			  <div data-hook="signup">
 			    <%= form_for resource, as: :spree_user, url: spree.registration_path(resource) do |f| %>
 			      <div data-hook="signup_inside_form">
 			        <%= render partial: 'spree/shared/user_form', locals: { f: f } %>
-			        <p><%= f.submit I18n.t('spree.create'), class: 'button primary' %></p>
+			        <span class="row text-right">
+								<%= f.submit I18n.t('spree.create'), class: 'ml-auto continuebtn' %>
+							</span>
 			      </div>
 			    <% end %>
 			  </div>
@@ -49,4 +47,4 @@
 			<div data-hook="login_extras"></div>
 		</div>
 	</div>
-</div>
+</section>

@@ -1,26 +1,23 @@
 <%= form_for Spree::User.new, as: :spree_user, url: spree.create_new_session_path do |f| %>
   <div id="password-credentials">
     <div class="row">
-      <div class="col-sm-3">
-        <%= f.label :email, I18n.t('spree.email') %><br />
-      </div>
-      <div class="col-sm-9">
-        <%= f.email_field :email, class: 'title', tabindex: 1, autofocus: true %>
+      <div class="col-12">
+        <%= f.email_field :email, placeholder: 'Email', class: 'p-2 my-2 w-100', tabindex: 1, autofocus: true, autocomplete: 'false' %>
       </div>
     </div>
     <div class="row">
-      <div class="col-sm-3">
-        <%= f.label :password, I18n.t('spree.password') %><br />
+      <div class="col-12">
+        <%= f.password_field :password, placeholder: 'Password', class: 'p-2 my-2 w-100', tabindex: 2, autocomplete: 'false' %>
       </div>
-      <div class="col-sm-9">
-        <%= f.password_field :password, class: 'title', tabindex: 2 %>
+    </div>
+    <div class="row">
+      <div class="col-6">
+        <%= f.check_box :remember_me, tabindex: 3%>
+        <%= f.label :remember_me, I18n.t('spree.remember_me')%>
+      </div>
+      <div class="col-6 text-right">
+        <%= f.submit I18n.t('spree.login'), class: 'continuebtn m-0', tabindex: 4 %>
       </div>
     </div>
   </div>
-  <p>
-    <%= f.check_box :remember_me, tabindex: 3 %>
-    <%= f.label :remember_me, I18n.t('spree.remember_me') %>
-  </p>
-
-  <p><%= f.submit I18n.t('spree.login'), class: 'button primary', tabindex: 4 %></p>
 <% end %>

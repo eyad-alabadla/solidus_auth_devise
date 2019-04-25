@@ -1,28 +1,19 @@
 <div class="row">
-  <div class="col-sm-3">
-    <%= f.label :email, I18n.t('spree.email') %><br />
-  </div>
-  <div class="col-sm-9">
-    <%= f.email_field :email, class: 'title' %>
+  <div class="col-12">
+    <%= f.email_field :email, placeholder: 'Email', class: 'p-2 my-2 w-100', tabindex: 1, autofocus: true, autocomplete: 'false' %>
   </div>
 </div>
 
 <div id="password-credentials">
   <div class="row">
-    <div class="col-sm-3">
-      <%= f.label :password, I18n.t('spree.password') %><br />
-    </div>
-    <div class="col-sm-9">
-      <%= f.password_field :password, class: 'title' %>
+    <div class="col-12">
+      <%= f.password_field :password, placeholder: 'Password', class: 'p-2 my-2 w-100', tabindex: 2, autocomplete: 'false' %>
     </div>
   </div>
 
   <div class="row">
-    <div class="col-sm-3">
-      <%= f.label :password_confirmation, I18n.t('spree.confirm_password') %><br />
-    </div>
-    <div class="col-sm-9">
-      <%= f.password_field :password_confirmation, class: 'title' %>
+    <div class="col-12">
+      <%= f.password_field :password_confirmation, placeholder: 'Confirm Password', class: 'p-2 my-2 w-100', tabindex: 2, autocomplete: 'false' %>
     </div>
   </div>
 </div>
