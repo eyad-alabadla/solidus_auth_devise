@@ -1,17 +1,30 @@
-<p>
-  <%= f.label :email, I18n.t('spree.email') %><br />
-  <%= f.email_field :email, class: 'title' %>
-</p>
-<div id="password-credentials">
-  <p>
-    <%= f.label :password, I18n.t('spree.password') %><br />
-    <%= f.password_field :password, class: 'title' %>
-  </p>
+<div class="row">
+  <div class="col-sm-3">
+    <%= f.label :email, I18n.t('spree.email') %><br />
+  </div>
+  <div class="col-sm-9">
+    <%= f.email_field :email, class: 'title' %>
+  </div>
+</div>
 
-  <p>
-    <%= f.label :password_confirmation, I18n.t('spree.confirm_password') %><br />
-    <%= f.password_field :password_confirmation, class: 'title' %>
-  </p>
+<div id="password-credentials">
+  <div class="row">
+    <div class="col-sm-3">
+      <%= f.label :password, I18n.t('spree.password') %><br />
+    </div>
+    <div class="col-sm-9">
+      <%= f.password_field :password, class: 'title' %>
+    </div>
+  </div>
+
+  <div class="row">
+    <div class="col-sm-3">
+      <%= f.label :password_confirmation, I18n.t('spree.confirm_password') %><br />
+    </div>
+    <div class="col-sm-9">
+      <%= f.password_field :password_confirmation, class: 'title' %>
+    </div>
+  </div>
 </div>
 
 <div data-hook="signup_below_password_fields"></div>
