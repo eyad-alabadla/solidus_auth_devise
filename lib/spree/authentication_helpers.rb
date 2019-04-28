@@ -22,7 +22,7 @@ module Spree
       end
 
       def spree_signup_path
-        spree.signup_path
+        spree.login_path
       end
 
       def spree_logout_path
