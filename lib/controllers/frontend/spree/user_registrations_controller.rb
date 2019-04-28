@@ -19,7 +19,7 @@ class Spree::UserRegistrationsController < Devise::RegistrationsController
     else
       clean_up_passwords(resource)
       respond_with(resource) do |format|
-        format.html { render :new }
+        format.html { redirect_to spree.login_path, flash: { error: resource.errors.full_messages.join(', ') } }
       end
     end
   end
