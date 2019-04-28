@@ -9,6 +9,7 @@ Spree::CheckoutController.class_eval do
 
   def registration
     @user = Spree::User.new
+    self.resource = @user
   end
 
   def update_registration
