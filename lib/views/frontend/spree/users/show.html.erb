@@ -1,43 +1,77 @@
-<h1><%= accurate_title %></h1>
+<section class="container my-3">
+	<div class="row">
+		<div class="col-12 my-5">
+			<h1 class="hero-dark-copy text-center">MY ACCOUNT</h1>
+			<div class="text-center hero-copy">
+				Save designs, manage projects, update your profile, and more.<br>
+				The Shade Store "My Account" is a great way to streamline and simplify your shopping experience.
+			</div>
+		</div>
+	</div>
+</section>
+<div class="container">
+  <ul class="nav nav-tabs mx-5" id="myTab" role="tablist">
+    <li class="nav-item mx-2">
+      <a class="nav-link active" id="orders-tab" data-toggle="tab" href="#orders" role="tab" aria-controls="orders" aria-selected="false">My Orders</a>
+    </li>
+    <li class="nav-item mx-2">
+      <a class="nav-link" id="account-tab" data-toggle="tab" href="#account" role="tab" aria-controls="account" aria-selected="true">My Account</a>
+    </li>
+  </ul>
 
-<div data-hook="account_summary" class="account-summary">
-  <dl id="user-info">
-    <dt><%= I18n.t('spree.email') %></dt>
-    <dd><%= @user.email %> (<%= link_to I18n.t('spree.edit'), spree.edit_account_path %>)</dd>
-  </dl>
-</div>
-
-<div data-hook="account_my_orders" class="account-my-orders">
-
-  <h3><%= I18n.t('spree.my_orders') %></h3>
-  <% if @orders.present? %>
-    <table class="order-summary">
-      <thead>
-      <tr>
-        <th class="order-number"><%= I18n.t(:number, scope: 'activerecord.attributes.spree/order') %></th>
-        <th class="order-date"><%= I18n.t('spree.date') %></th>
-        <th class="order-status"><%= I18n.t('spree.status') %></th>
-        <th class="order-payment-state"><%= I18n.t('spree.payment_state') %></th>
-        <th class="order-shipment-state"><%= I18n.t('spree.shipment_state') %></th>
-        <th class="order-total"><%= I18n.t('spree.total') %></th>
-      </tr>
-      </thead>
-      <tbody>
-      <% @orders.each do |order| %>
-        <tr class="<%= cycle('even', 'odd') %>">
-          <td class="order-number"><%= link_to order.number, order_url(order) %></td>
-          <td class="order-date"><%= l order.completed_at.to_date %></td>
-          <td class="order-status"><%= I18n.t("spree.order_state.#{order.state}").titleize %></td>
-          <td class="order-payment-state"><%= I18n.t("spree.payment_states.#{order.payment_state}").titleize if order.payment_state %></td>
-          <td class="order-shipment-state"><%= I18n.t("spree.shipment_states.#{order.shipment_state}").titleize if order.shipment_state %></td>
-          <td class="order-total"><%= order.display_total %></td>
-        </tr>
+  <div class="tab-content" id="myTabContent">
+    <div data-hook="account_my_orders" class="account-my-orders tab-pane show active" id="orders" role="tabpanel" aria-labelledby="orders-tab">
+      <% if @orders.present? %>
+        <table class="order-summary table table-hover">
+          <thead class="thead-light">
+          <tr>
+            <th scope="col" class="order-number"><%= I18n.t(:number, scope: 'activerecord.attributes.spree/order') %></th>
+            <th scope="col" class="order-date"><%= I18n.t('spree.date') %></th>
+            <th scope="col" class="order-status"><%= I18n.t('spree.status') %></th>
+            <th scope="col" class="order-payment-state"><%= I18n.t('spree.payment_state') %></th>
+            <th scope="col" class="order-shipment-state"><%= I18n.t('spree.shipment_state') %></th>
+            <th scope="col" class="order-total"><%= I18n.t('spree.total') %></th>
+          </tr>
+          </thead>
+          <tbody>
+          <% @orders.each do |order| %>
+            <tr class="<%= cycle('even', 'odd') %>">
+              <td scope="row" class="order-number"><%= link_to order.number, order_url(order) %></td>
+              <td class="order-date"><%= l order.completed_at.to_date %></td>
+              <td class="order-status"><%= I18n.t("spree.order_state.#{order.state}").titleize %></td>
+              <td class="order-payment-state"><%= I18n.t("spree.payment_states.#{order.payment_state}").titleize if order.payment_state %></td>
+              <td class="order-shipment-state"><%= I18n.t("spree.shipment_states.#{order.shipment_state}").titleize if order.shipment_state %></td>
+              <td class="order-total"><%= order.display_total %></td>
+            </tr>
+          <% end %>
+          </tbody>
+        </table>
+      <% else %>
+        <p><%= I18n.t('spree.you_have_no_orders_yet') %></p>
       <% end %>
-      </tbody>
-    </table>
-  <% else %>
-    <p><%= I18n.t('spree.you_have_no_orders_yet') %></p>
-  <% end %>
-  <br />
+      <br />
+    </div>
+    <div data-hook="account_summary" class="account-summary tab-pane row" id="account" role="tabpanel" aria-labelledby="account-tab">
+      <div data-hook="account_edit" class="col-12 col-md-6">
+        <div class="row">
+        <%= form_for Spree::User.new, as: @user, url: spree.user_path(@user), method: :put do |f| %>
+          <div id="password-credentials">
+            <div class="row">
+              <div class="col-12">
+                <%= f.password_field :password, placeholder: 'Password', class: 'p-2 my-2 w-100', autocomplete: "off" %>
+              </div>
+            </div>
+
+            <div class="row">
+              <div class="col-12">
+                <%= f.password_field :password_confirmation, placeholder: 'Confirm Password', class: 'p-2 my-2 w-100', autocomplete: "off" %>
+              </div>
+            </div>
+          </div>
+          <%= f.submit "Change Password", class: 'btn continuebtn' %>
+        <% end %>
+      </div>
+    </div>
+  </div>
 
 </div>
