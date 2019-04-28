@@ -30,7 +30,7 @@ Spree::Core::Engine.routes.draw do
       get '/password/change', to: 'user_passwords#edit', as: :edit_password
       put '/password/change', to: 'user_passwords#update', as: :update_password
       get '/confirm', to: 'user_confirmations#show', as: :confirmation if Spree::Auth::Config[:confirmable]
-      spree_user_root to: "spree/users#show"
+      root to: "spree/users#show"
     end
 
     put '/checkout/registration', to: 'checkout#update_registration', as: :update_checkout_registration
