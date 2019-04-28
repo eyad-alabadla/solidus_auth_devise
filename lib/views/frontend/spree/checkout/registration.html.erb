@@ -1,9 +1,6 @@
 <%= render partial: 'spree/shared/error_messages', locals: { target: @user } %>
 <h1><%= I18n.t('spree.registration') %></h1>
 <div id="registration" data-hook>
-  <div id="account" class="columns alpha eight">
-    <%= render template: 'spree/user_sessions/new' %>
-  </div>
   <% if Spree::Config[:allow_guest_checkout] %>
     <div id="guest_checkout" data-hook class="columns omega eight">
       <h6><%= I18n.t('spree.guest_user_account') %></h6>
