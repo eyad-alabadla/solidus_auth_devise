@@ -33,7 +33,6 @@ Spree::Core::Engine.routes.draw do
       get '/confirm', to: 'user_confirmations#show', as: :confirmation if Spree::Auth::Config[:confirmable]
     end
 
-    get '/checkout/registration', to: 'checkout#registration', as: :checkout_registration
     put '/checkout/registration', to: 'checkout#update_registration', as: :update_checkout_registration
 
     resource :account, controller: 'users'

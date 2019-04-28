@@ -40,7 +40,7 @@ Spree::CheckoutController.class_eval do
     def check_registration
       return unless registration_required?
       store_location
-      redirect_to spree.checkout_registration_path
+      redirect_to spree.login_path
     end
 
     def registration_required?
