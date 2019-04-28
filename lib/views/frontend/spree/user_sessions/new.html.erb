@@ -34,11 +34,11 @@
 			<div id="new-customer">
 			  <h6><%= I18n.t('spree.new_customer') %></h6>
 			  <div data-hook="signup">
-			    <%= form_for resource, as: :spree_user, url: spree.registration_path(resource) do |f| %>
+			    <%= form_for resource, as: :spree_user, url: spree.registration_path(resource), autocomplete: "off" do |sign_up_form| %>
 			      <div data-hook="signup_inside_form">
-			        <%= render partial: 'spree/shared/user_form', locals: { f: f } %>
+			        <%= render partial: 'spree/shared/user_form', locals: { f: sign_up_form } %>
 			        <span class="row text-right">
-								<%= f.submit I18n.t('spree.create'), class: 'ml-auto continuebtn' %>
+								<%= sign_up_form.submit I18n.t('spree.create'), class: 'ml-auto continuebtn' %>
 							</span>
 			      </div>
 			    <% end %>
