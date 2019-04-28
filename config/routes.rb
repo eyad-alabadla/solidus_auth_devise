@@ -35,7 +35,7 @@ Spree::Core::Engine.routes.draw do
     put '/checkout/registration', to: 'checkout#update_registration', as: :update_checkout_registration
 
     resource :account, controller: 'users'
-    get '/account', to: 'users#show', as: :user_root
+    get '/account', to: 'users#show', as: :spree_user_root
   end
 
   if (
